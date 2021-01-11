@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5eab55d-0788-4e15-83d7-41ef60f30418" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/medicijnen/medForm.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/patienten/patient.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Healthone2.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Healthone2.0.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminContorller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminContorller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/medicijnen/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/medicijnen/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +129,8 @@
       <workItem from="1607694416696" duration="905000" />
       <workItem from="1607948519572" duration="5709000" />
       <workItem from="1609763429676" duration="5047000" />
-      <workItem from="1610284125728" duration="8389000" />
+      <workItem from="1610284125728" duration="8707000" />
+      <workItem from="1610366093671" duration="844000" />
     </task>
     <servers />
   </component>
