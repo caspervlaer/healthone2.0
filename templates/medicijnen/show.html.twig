@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <a href="{{ path('medicijnenForm') }}">add medicijn</a>
+    <a href="{{ path('addRecept') }}">add recept</a>
     {% for medicijn in medicijnen %}
         <div class="jumbotron">
         <a hidden>{{ medicijn.id }}</a>
@@ -10,6 +11,7 @@
         vergoed : {% if medicijn.compensated == 1%} ja {% else %} nee {% endif %} <br>
         <a href="{{ path('deleteMedicijnen', {'id':medicijn.id}) }}">delete</a>
         <a href="{{ path('updateMedicijnen', {'id':medicijn.id}) }}">update</a>
+        <a href="{{ path('addRecept',) }}">add recept</a>
         </div>
     {% endfor %}
 {% endblock %}

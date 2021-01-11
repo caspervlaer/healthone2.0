@@ -5,7 +5,9 @@ namespace App\Controller;
 
 use App\Entity\Medicijnen;
 
+use App\Entity\Recept;
 use App\Form\MedicijnenFormType;
+use App\Form\ReceptenFormType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,6 +24,32 @@ class AdminContorller extends AbstractController
         $medicijnen = $entitymanager->getRepository(Medicijnen::class)->findAll();
         return $this->render('medicijnen/show.html.twig',[
             'medicijnen'=> $medicijnen
+        ]);
+    }
+
+    /**
+     * @Route("/receptAdd", name="addRecept")
+     */
+    public function addRecept(EntityManagerInterface $entitymanager,Request $request): Response{
+        $rec = new Recept();
+        $form = $this->createForm(ReceptenFormType::class, $rec);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $med = $form->getData();
+
+            $recept = $entitymanager->getRepository(Medicijnen::class)->find('11');
+            $med->setMedicijn($recept);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($med);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('listmedicijnen');
+        }
+
+        return $this->render('medicijnen/medform.html.twig',[
+            'form' => $form->createView(),
         ]);
     }
 
