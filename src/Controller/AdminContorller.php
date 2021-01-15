@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\Medicijnen;
 
+use App\Entity\Patienten;
 use App\Entity\Recept;
 use App\Form\MedicijnenFormType;
 use App\Form\ReceptenFormType;
@@ -28,6 +29,26 @@ class AdminContorller extends AbstractController
     }
 
     /**
+     * @Route("/listRecept", name="listRecept")
+     */
+    public function showRecept(EntityManagerInterface $entitymanager){
+        $recepten = $entitymanager->getRepository(Recept::class)->findAll();
+        return $this->render('recepten/show.html.twig',[
+            'recept'=> $recepten
+        ]);
+    }
+
+    /**
+     * @Route ("/listPatienten", name="listPatienten"
+     */
+    public function showPatientenACtion(EntityManagerInterface $entityManager){
+        $patienten = $entityManager->getRepository(Patienten::class)->findAll();
+        return $this->render('recepten/show.html.twig',[
+            'patienten'=> $patienten
+        ]);
+    }
+
+    /**
      * @Route("/receptAdd", name="addRecept")
      */
     public function addRecept(EntityManagerInterface $entitymanager,Request $request): Response{
@@ -38,8 +59,7 @@ class AdminContorller extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $med = $form->getData();
 
-            $recept = $entitymanager->getRepository(Medicijnen::class)->find('11');
-            $med->setMedicijn($recept);
+
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($med);
@@ -79,7 +99,7 @@ class AdminContorller extends AbstractController
     /**
      * @Route ("/{id}/deletemed", name="deleteMedicijnen")
      */
-    public function deleteMedicijnen(Request $request, $id, EntityManagerInterface $entitymanager){
+    public function deleteMedicijnen($id, EntityManagerInterface $entitymanager){
         $medicijn = $entitymanager->getRepository(Medicijnen::class)->find($id);
         $entitymanager->remove($medicijn);
         $entitymanager->flush();

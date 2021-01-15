@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <a href="{{ path('listmedicijnen') }}">terug</a><br>
+    {% for recept in recept %}
+        <div class="jumbotron">
+            <a hidden>{{ recept.id }}</a>
+            medicijn : {{ recept.medicijn.name }} <br>
+            hoeveel per keer : {{ recept.dosis }} <br>
+            hoe vaak in de week : {{ recept.duur}} <br>
+            begin datum : {{ recept.datum|date("m/d/Y") }}
+        </div>
+    {% endfor %}
+{% endblock %}
