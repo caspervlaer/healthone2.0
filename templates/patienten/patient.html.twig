@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
-    {% block stylesheet %}
-        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
-    {% endblock %}
 {% block body %}
+    <a href="{{ path('listmedicijnen') }}">terug</a><br>
+    <a href="{{ path('addPatient') }}">add patient</a>
+    {% for patient in patienten %}
+    <div class="jumbotron">
+        <a hidden>{{ patient.id }}</a>
+        naam : {{ patient.name }} <br>
+        geboorte datum : {{ patient.GeboorteDatum|date("m/d/Y") }} <br>
+        adres : {{ patient.adres}} <br>
+        woonplaats : {{ patient.woonplaats }} <br>
+        zk nummer : {{ patient.zkNummer }}
+    </div>
+{% endfor %}
 {% endblock %}

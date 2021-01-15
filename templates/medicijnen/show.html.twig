@@ -3,6 +3,7 @@
     <a href="{{ path('medicijnenForm') }}">add medicijn</a><br>
     <a href="{{ path('addRecept') }}">add recept</a><br>
     <a href="{{ path('listRecept') }}">show recepten</a><br>
+    <a href="{{ path('listPatienten') }}">show patienten</a>
     {% for medicijn in medicijnen %}
         <div class="jumbotron">
         <a hidden>{{ medicijn.id }}</a>

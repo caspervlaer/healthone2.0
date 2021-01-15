@@ -8,6 +8,7 @@ use App\Entity\Medicijnen;
 use App\Entity\Patienten;
 use App\Entity\Recept;
 use App\Form\MedicijnenFormType;
+use App\Form\PatientenFormType;
 use App\Form\ReceptenFormType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -39,12 +40,35 @@ class AdminContorller extends AbstractController
     }
 
     /**
-     * @Route ("/listPatienten", name="listPatienten"
+     * @Route ("/listPatienten", name="listPatienten")
      */
-    public function showPatientenACtion(EntityManagerInterface $entityManager){
+    public function showPatientenAction(EntityManagerInterface $entityManager){
         $patienten = $entityManager->getRepository(Patienten::class)->findAll();
-        return $this->render('recepten/show.html.twig',[
+        return $this->render('patienten/patient.html.twig',[
             'patienten'=> $patienten
+        ]);
+    }
+
+    /**
+     * @Route ("/patientAdd", name="addPatient")
+     */
+    public function addPatient(Request $request):Response{
+        $pat = new Patienten();
+        $form = $this->createForm(PatientenFormType::class, $pat);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $pat = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($pat);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('listPatienten');
+        }
+
+        return $this->render('medicijnen/medform.html.twig',[
+            'form' => $form->createView(),
         ]);
     }
 
