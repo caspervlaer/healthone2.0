@@ -4,6 +4,7 @@
     {% for recept in recept %}
         <div class="jumbotron">
             <a hidden>{{ recept.id }}</a>
+            patient : {{ recept.patienten.name }} <br>
             medicijn : {{ recept.medicijn.name }} <br>
             hoeveel per keer : {{ recept.dosis }} <br>
             hoe vaak in de week : {{ recept.duur}} <br>

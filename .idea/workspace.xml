@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminContorller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminContorller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/medicijnen/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/medicijnen/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patienten/patient.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patienten/patient.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/recepten/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recepten/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +136,7 @@
       <workItem from="1610284125728" duration="8707000" />
       <workItem from="1610366093671" duration="8173000" />
       <workItem from="1610449489177" duration="1663000" />
-      <workItem from="1610709022342" duration="5906000" />
+      <workItem from="1610709022342" duration="9084000" />
     </task>
     <servers />
   </component>

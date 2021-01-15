@@ -73,17 +73,17 @@ class AdminContorller extends AbstractController
     }
 
     /**
-     * @Route("/receptAdd", name="addRecept")
+     * @Route("/{id}/addRecept", name="addRecept")
      */
-    public function addRecept(EntityManagerInterface $entitymanager,Request $request): Response{
+    public function addRecept($id,EntityManagerInterface $entityManager,Request $request): Response{
         $rec = new Recept();
         $form = $this->createForm(ReceptenFormType::class, $rec);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $med = $form->getData();
-
-
+            $pat = $entityManager->getRepository(patienten::class)->find($id);
+            $med->setPatienten($pat);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($med);
@@ -128,6 +128,16 @@ class AdminContorller extends AbstractController
         $entitymanager->remove($medicijn);
         $entitymanager->flush();
         return $this->redirectToRoute('listmedicijnen');
+    }
+
+    /**
+     * @Route ("/{id}/deletepat", name="deletePatienten")
+     */
+    public function deletePatienten($id, EntityManagerInterface $entityManager){
+        $patient = $entityManager->getRepository(Patienten::class)->find($id);
+        $entityManager->remove($patient);
+        $entityManager->flush();
+        return $this->redirectToRoute('listPatienten');
     }
 
     /**

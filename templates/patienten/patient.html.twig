@@ -9,7 +9,9 @@
         geboorte datum : {{ patient.GeboorteDatum|date("m/d/Y") }} <br>
         adres : {{ patient.adres}} <br>
         woonplaats : {{ patient.woonplaats }} <br>
-        zk nummer : {{ patient.zkNummer }}
+        zk nummer : {{ patient.zkNummer }} <br>
+        <a href="{{ path('addRecept', {'id':patient.id}) }}">add recept</a><br>
+        <a href="{{ path('deletePatienten', {'id':patient.id}) }}">delete patient</a>
     </div>
 {% endfor %}
 {% endblock %}
