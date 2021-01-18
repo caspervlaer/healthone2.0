@@ -7,6 +7,7 @@ use App\Entity\Medicijnen;
 
 use App\Entity\Patienten;
 use App\Entity\Recept;
+use App\Entity\User;
 use App\Form\MedicijnenFormType;
 use App\Form\PatientenFormType;
 use App\Form\ReceptenFormType;
@@ -65,6 +66,29 @@ class AdminContorller extends AbstractController
             $entityManager->flush();
 
             return $this->redirectToRoute('listPatienten');
+        }
+
+        return $this->render('medicijnen/medform.html.twig',[
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route ("/userForm", name="userForm")
+     */
+    public function userForm(Request $request):Response{
+        $user = new User();
+        $form = $this->createForm(UsersFormType::class, $user);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('listmedicijnen');
         }
 
         return $this->render('medicijnen/medform.html.twig',[
