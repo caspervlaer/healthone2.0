@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5eab55d-0788-4e15-83d7-41ef60f30418" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminContorller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminContorller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/medicijnen/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/medicijnen/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patienten/patient.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patienten/patient.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recepten/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recepten/show.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="b5eab55d-0788-4e15-83d7-41ef60f30418" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -137,6 +131,7 @@
       <workItem from="1610366093671" duration="8173000" />
       <workItem from="1610449489177" duration="1663000" />
       <workItem from="1610709022342" duration="9155000" />
+      <workItem from="1610970153052" duration="369000" />
     </task>
     <servers />
   </component>
