@@ -11,42 +11,25 @@ use App\Entity\User;
 use App\Form\MedicijnenFormType;
 use App\Form\PatientenFormType;
 use App\Form\ReceptenFormType;
+use App\Form\UsersFormType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AdminContorller extends AbstractController
 {
     /**
-     * @Route("/", name="listmedicijnen")
+     * @Route("/mainpage", name="listmedicijnen")
      */
     public function showMedicijnenAction(EntityManagerInterface $entitymanager){
         $medicijnen = $entitymanager->getRepository(Medicijnen::class)->findAll();
         return $this->render('medicijnen/show.html.twig',[
             'medicijnen'=> $medicijnen
-        ]);
-    }
-
-    /**
-     * @Route("/listRecept", name="listRecept")
-     */
-    public function showRecept(EntityManagerInterface $entitymanager){
-        $recepten = $entitymanager->getRepository(Recept::class)->findAll();
-        return $this->render('recepten/show.html.twig',[
-            'recept'=> $recepten
-        ]);
-    }
-
-    /**
-     * @Route ("/listPatienten", name="listPatienten")
-     */
-    public function showPatientenAction(EntityManagerInterface $entityManager){
-        $patienten = $entityManager->getRepository(Patienten::class)->findAll();
-        return $this->render('patienten/patient.html.twig',[
-            'patienten'=> $patienten
         ]);
     }
 
@@ -76,41 +59,20 @@ class AdminContorller extends AbstractController
     /**
      * @Route ("/userForm", name="userForm")
      */
-    public function userForm(Request $request):Response{
+    public function userForm(UserPasswordEncoderInterface $passwordEncoder,Request $request):Response{
         $user = new User();
+        $this->passwordEncoder = $passwordEncoder;
         $form = $this->createForm(UsersFormType::class, $user);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
 
+            $user->setRoles(["ROLE_USER"]);
+            $user->setPassword($this->passwordEncoder->encodePassword($user,$user->getPassword()));
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('listmedicijnen');
-        }
-
-        return $this->render('medicijnen/medform.html.twig',[
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/addRecept", name="addRecept")
-     */
-    public function addRecept($id,EntityManagerInterface $entityManager,Request $request): Response{
-        $rec = new Recept();
-        $form = $this->createForm(ReceptenFormType::class, $rec);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $med = $form->getData();
-            $pat = $entityManager->getRepository(patienten::class)->find($id);
-            $med->setPatienten($pat);
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($med);
             $entityManager->flush();
 
             return $this->redirectToRoute('listmedicijnen');

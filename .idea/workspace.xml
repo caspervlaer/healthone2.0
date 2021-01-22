@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5eab55d-0788-4e15-83d7-41ef60f30418" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Healthone2.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Healthone2.0.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/ApothekerController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/ArtsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminContorller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminContorller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UsersFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UsersFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/medicijnen/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/medicijnen/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/patienten/patient.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patienten/patient.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +147,8 @@
       <workItem from="1610366093671" duration="8173000" />
       <workItem from="1610449489177" duration="1663000" />
       <workItem from="1610709022342" duration="9155000" />
-      <workItem from="1610970153052" duration="6225000" />
+      <workItem from="1610970153052" duration="10139000" />
+      <workItem from="1611314290763" duration="6023000" />
     </task>
     <servers />
   </component>

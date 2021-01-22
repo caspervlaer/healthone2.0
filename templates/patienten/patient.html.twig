@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path('listmedicijnen') }}">terug</a><br>
     <a href="{{ path('addPatient') }}">add patient</a>
+    {% endif %}
     {% for patient in patienten %}
     <div class="jumbotron">
         <a hidden>{{ patient.id }}</a>
@@ -10,8 +17,12 @@
         adres : {{ patient.adres}} <br>
         woonplaats : {{ patient.woonplaats }} <br>
         zk nummer : {{ patient.zkNummer }} <br>
-        <a href="{{ path('addRecept', {'id':patient.id}) }}">add recept</a><br>
-        <a href="{{ path('deletePatienten', {'id':patient.id}) }}">delete patient</a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('deletePatienten', {'id':patient.id}) }}">delete patient</a><br>
+        {% endif %}
+        {% if is_granted('ROLE_ARTS') %}
+        <a href="{{ path('addRecept', {'id':patient.id}) }}">add recept</a>
+        {% endif %}
     </div>
 {% endfor %}
 {% endblock %}

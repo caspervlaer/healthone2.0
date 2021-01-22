@@ -96,11 +96,19 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             return new RedirectResponse($targetPath);
         }
         if ($token->getUser()->getRoles() === ["ROLE_USER"]){
-            return new RedirectResponse($this->urlGenerator->generate('activiteitem'));
+            return new RedirectResponse($this->urlGenerator->generate('listmedicijnen'));
         }
         if ($token->getUser()->getRoles() === ["ROLE_ADMIN"]){
             return new RedirectResponse($this->urlGenerator->generate('listmedicijnen'));
         }
+        if ($token->getUser()->getRoles() === ["ROLE_ARTS"]){
+            return new RedirectResponse($this->urlGenerator->generate('listPatienten'));
+        }
+        if ($token->getUser()->getRoles() === ["ROLE_APOTHEKER"]){
+            return new RedirectResponse($this->urlGenerator->generate('listmedicijnen'));
+        }
+
+
 
 //        For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
 //        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);

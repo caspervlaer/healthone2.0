@@ -5,10 +5,18 @@
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path('medicijnenForm') }}">add medicijn</a><br>
+    {% endif %}
+    {% if is_granted('ROLE_APOTHEKER') %}
     <a href="{{ path('listRecept') }}">show recepten</a><br>
+    {% endif %}
+    {% if is_granted('ROLE_ARTS') or is_granted('ROLE_ADMIN') %}
     <a href="{{ path('listPatienten') }}">show patienten</a><br>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path('userForm') }}">add user</a>
+    {% endif %}
     {% for medicijn in medicijnen %}
         <div class="jumbotron">
         <a hidden>{{ medicijn.id }}</a>
@@ -16,8 +24,10 @@
         sideEffect : {{ medicijn.sideEffect }} <br>
         benefits : {{ medicijn.benefits}} <br>
         vergoed : {% if medicijn.compensated == 1%} ja {% else %} nee {% endif %} <br>
+            {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('deleteMedicijnen', {'id':medicijn.id}) }}">delete</a>
         <a href="{{ path('updateMedicijnen', {'id':medicijn.id}) }}">update</a>
+            {% endif %}
         </div>
     {% endfor %}
 {% endblock %}
